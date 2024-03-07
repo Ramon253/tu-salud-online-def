@@ -1,0 +1,139 @@
+<nav
+    class="relative bg-main flex justify-evenly space-x-4 items-center dark:bg-main-dark w-full h-[15vh] text-gray-100 text-xl ">
+    <div class="justify-self-start absolute  lg:static left-10">
+        <a [routerLink]="" class="">
+            <div class="sr-only">Icon button to go to home page</div>
+            <img src="./assets/images/homeIcon.png"
+                 class="aspect-square  size-[7vh] rounded-full  shadow  hover:shadow-blue-900 hover:shadow-lg hover:scale-105 transition"
+                 alt="Home">
+        </a>
+    </div>
+    <div class="flex justify-self-end space-x-16 items-end p-4 justify-center w-fit h-fit text-center text-gray-200">
+        <ul class="hidden xl:flex w-fit  justify-end space-x-10 items-end">
+            <li class="shadow transition hover:scale-110"><a class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded"  href="">Especialidades</a></li>
+            <li class="shadow transition hover:scale-110"><a class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" href="">Cita</a></li>
+            <li class="shadow transition hover:scale-110"><a class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" href="">Seguro</a></li>
+            <li class="shadow transition hover:scale-110"><a class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" href="">Sobre nosotros</a></li>
+        </ul>
+        <!--Search bar-->
+        <div class="hidden md:flex">
+            <form class="flex" action="">
+                <div class="flex space-x-2">
+                    <input type="text" placeholder="Search" class="rounded p-1 caret-main text-black">
+                    <button type="submit" class="bg-blue-500 rounded p-1 ">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="hidden md:flex">
+            <button (click)="toggleDarkMode()" class="transition-all hover:scale-125 ">
+                <span class="material-icons">{{ darkMode() ? 'dark_mode' : 'light_mode' }}</span>
+            </button>
+        </div>
+        <!--Auth buttons-->
+        @if (isLogged()) {
+            <div>
+                Welcome Ramon
+            </div>
+        } @else {
+            <div class="hidden xl:flex w-fit space-x-4">
+                <button class="hover:scale-110 min-w-fit text-gray-400 hover:text-white transition group:">
+                    <a routerLink="/login">
+                        Log in
+                    </a>
+                </button>
+                <button
+                    class="btn relative min-w-fit inline-flex items-center justify-start overflow-hidden transition-all bg-main rounded-lg hover:outline-main border-myGreen border-2 dark:bg-main-dark group ">
+                <span
+                    class="w-0 h-full text-none rounded bg-myGreen absolute top-0 left-0 ease-in-out group-hover:border-2 border-myGreen duration-300 transition-all group-hover:size-full -z-1">
+                </span>
+                    <span
+                        class="w-full px-4 py-2 text-white transition-colors duration-300 ease-out  z-10"><a
+                        href="/register">Sign up</a>
+                </span>
+                </button>
+            </div>
+        }
+
+
+    </div>
+    <div
+        class="xl:hidden fixed sm:right-10 right-4 top-10 p-2 rounded-md bg-main-dark z-50 dark:bg-main hover:scale-110 transition">
+        <button (click)="toggleMenu()">
+            <span class="text-2xl material-icons">{{ getMenu() ? 'close' : 'menu' }}</span>
+        </button>
+    </div>
+
+</nav>
+<div class="xl:hidden">
+    <div id="menu" #menu
+         class="flex flex-col  transition ease-in duration-400 w-3/4 max-w-[500px] h-screen bg-main dark:bg-main-dark fixed right-0 top-0 z-30 translate-x-full shadow p-4 pt-5 space-y-[10vh]">
+
+        @if (isLogged()) {
+            <div class="w-3/4 bg-main p-2 rounded-lg">
+                Welcome Ramon
+            </div>
+        } @else {
+            <div class="flex w-3/4 justify-evenly flex-wrap bg-main p-2 rounded-lg space-x-2">
+                <button class="hover:scale-110 w-fit text-gray-400 hover:text-white transition group:">
+                    <a (click)="login()">
+                        Log in
+                    </a>
+                </button>
+                <button
+                    class="btn relative min-w-fit inline-flex items-center justify-start overflow-hidden transition-all bg-main rounded-lg hover:outline-main border-myGreen border-2 dark:bg-main-dark group ">
+                <span
+                    class="w-0 h-full text-none rounded bg-myGreen absolute top-0 left-0 ease-in-out group-hover:border-2 border-myGreen duration-300 transition-all group-hover:size-full -z-1">
+                </span>
+                    <span
+                        class="w-full px-4 py-2 text-white transition-colors duration-300 ease-out  z-10"><a
+                        href="/register">Sign up</a>
+                </span>
+                </button>
+            </div>
+        }
+        <div class="flex md:hidden flex-col items-center justify-start space-x-10 space-y-8 flex-wrap">
+            <form class="flex" action="">
+                <div class="flex md:space-x-2">
+                    <input type="text" placeholder="Search" class="rounded p-1 caret-main text-black">
+                    <button type="submit" class="bg-blue-500 rounded p-1 text-gray-300">
+                        Search
+                    </button>
+                </div>
+            </form>
+            <div class="flex w-1/3">
+                <button (click)="toggleDarkMode()" class="transition-all hover:scale-125 text-gray-300">
+                    <span class="material-icons">{{ darkMode() ? 'dark_mode' : 'light_mode' }}</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="min-h-fit h-1/3 w-full text-gray-200 divide-y divide-black">
+
+            <ul class="flex flex-col  justify-evenly w-fit h-full ">
+                <li class="flex items-center border-b border-gray-800 pb-4">
+                    <a href="" class="flex items-center space-x-2 hover:scale-105 hover:font-medium transition hover:bg-main-dark hover:dark:bg-main p-2 rounded">
+                        <span class="material-icons">home</span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="flex items-center"><a class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition" href="">Especialidades</a></li>
+                <li class="flex items-center"><a class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition" href="">Cita</a></li>
+                <li class="flex items-center"><a class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition" href="">Seguro</a></li>
+                <li class="flex items-center"><a class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition" href="">Sobre nosotros</a></li>
+            </ul>
+            <div class="pt-10">
+                <a (click)="logout()" class="flex items-center space-x-2 cursor-pointer border-red-500 text-red-500 rounded-md border-2 p-2 w-fit text-md font-bold hover:text-white hover:bg-red-500 transition">
+                    <span class="material-icons">logout</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div #menuBg
+         class="hidden bg-gray-900 transition ease-in-out duration-400 opacity-50 z-20 w-full h-screen absolute  top-0"
+         (click)="toggleMenu()">
+    </div>
+</div>

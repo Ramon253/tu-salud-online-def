@@ -3,6 +3,9 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 
+import {LoginService} from "./login.service";
+import {provideHttpClient, withFetch} from "@angular/common/http";
+
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  providers: [provideRouter(routes), provideHttpClient(withFetch()), LoginService]
 };
