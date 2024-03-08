@@ -1,4 +1,4 @@
-import {Component, ElementRef, signal, ViewChild} from '@angular/core';
+import {Component, ContentChild, ElementRef, signal, ViewChild} from '@angular/core';
 
 @Component({
     selector: 'app-audio-controller',
@@ -11,14 +11,22 @@ export class AudioControllerComponent {
     @ViewChild('audioWindow') audioWindow!: ElementRef
     @ViewChild('openButton') openButton!: ElementRef
     @ViewChild('audioElement') audioElement!: ElementRef
+    @ViewChild('volumeContainer') volumeContainer! : ElementRef
 
     curTime = signal<number>(0);
     time = signal<number>(0)
     isOpen = signal<boolean>(false)
 
-    ngOnInit() {
+    setSpeed(value : string){
+        console.log(parseFloat(value))
+        this.audioElement.nativeElement.playbackRate = parseFloat(value)
+    }
 
-
+    toggleVolumeControls(){
+        this.volumeContainer.nativeElement.classList.toggle('hidden')
+    }
+    changeVolume(volume : string){
+        this.audioElement.nativeElement.volume = parseFloat(volume)
     }
 
     formatTime(seconds: number): string {
@@ -51,6 +59,7 @@ export class AudioControllerComponent {
             clearInterval(counter)
         }
     }
+
 
     toggleButton() {
 

@@ -1,34 +1,44 @@
-<div #audioWindow class="fixed max-w-screen flex transition items-center justify-center translate-x-[87%]  top-40 right-0 rounded-l-3xl bg-main dark:bg-light w-fit h-fit p-4 space-x-4 text-black">
-    <div (click)="toggleButton()" class="hover:scale-110 transition flex items-center justify-center">
-        <span #openButton class="material-icons transition duration-300 bg-secondary-light rounded-full p-2 order-1 cursor-pointer text-center">
-            arrow_back_ios
+<div #audioWindow
+     class="fixed max-w-screen flex  transition items-center justify-center translate-x-[87%]  top-56 right-0 rounded-l-3xl bg-dark dark:bg-light w-fit h-fit p-4 space-x-4 dark:text-gray-800 text-gray-200 ">
+    <div (click)="toggleButton()" class="hover:scale-110 w-13% transition flex items-center justify-center">
+        <span #openButton
+              class="material-icons-outlined transition duration-300 bg-secondary dark:bg-secondary-light rounded-full p-2 order-1 cursor-pointer text-center">
+            {{ isOpen() ? 'arrow_back_ios' : 'music_note' }}
         </span>
     </div>
     <div class="cursor-pointer hover:scale-110 transition" (click)="play()">
         <span class="material-icons-outlined">{{ audioElement.paused ? 'play_arrow' : 'pause' }}</span>
     </div>
-    <span class="">{{formatTime(curTime())}} / {{formatTime(time())}}</span>
+    <span class="">{{ formatTime(curTime()) }} / {{ formatTime(time()) }}</span>
     <div>
         <input type="range" max="{{time()}}" value="{{curTime()}}" min="0" (change)="slideTime(slider.value) " #slider>
     </div>
     <div>
-
-        <select  class="p-2 outline-secondary-light outline drop-shadow-xl drop-shadow-secondary-light " name="" id="velocity">
-            <option>0.25</option>
-            <option>0.5</option>
-            <option>0.75</option>
-            <option>1</option>
-            <option>1</option>
-            <option>1.25</option>
-            <option>1.5</option>
-            <option>1.75</option>
-            <option>2</option>
+        <select (change)="setSpeed(speed.value)"
+                class="p-2 outline-secondary-light outline drop-shadow-xl drop-shadow-secondary-light bg-secondary dark:bg-secondary-light"
+                #speed>
+            <option class="p-4" value="-1">Velocidad</option>
+            <option class="p-4" value="0.25">0.25</option>
+            <option class="p-4" value="0.5">0.5</option>
+            <option class="p-4" value="0.75">0.75</option>
+            <option class="p-4" value="1">1</option>
+            <option class="p-4" value="1.25">1.25</option>
+            <option class="p-4" value="1.5">1.5</option>
+            <option class="p-4" value="1.75">1.75</option>
+            <option class="p-4" value="2">2</option>
         </select>
     </div>
-    <div class="cursor-pointer">
-        <span class="material-icons-outlined">volume_up</span>
+    <div class="cursor-pointer relative overflow-visible flex flex-col">
+        <div #volumeContainer class="hidden  w-fit ">
+            <input #volume type="range" class="-rotate-90 " min="0" step="0.01" value="{{audioElement.volume}}" max="1" (change)="changeVolume(volume.value)">
+        </div>
+        <div (click)="toggleVolumeControls()">
+            <span class="material-icons-outlined">volume_up</span>
+        </div>
+
     </div>
     <audio #audioElement src="assets/audio/IntroduccionTuSaludOnline.mp3" class="appearance-none">
         Jl grande
+        <track src="">
     </audio>
 </div>

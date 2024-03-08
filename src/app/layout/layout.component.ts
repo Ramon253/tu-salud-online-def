@@ -33,6 +33,7 @@ export class LayoutComponent {
         /*Scroll event*/
     }
 
+
     toggleDarkMode(): void {
         this.darkMode.set(!this.darkMode())
         return this.sendDarkMode.emit(this.darkMode())
