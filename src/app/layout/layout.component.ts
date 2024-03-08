@@ -1,13 +1,15 @@
 import {Component, ElementRef, EventEmitter, HostListener, Output, signal, ViewChild} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {LoginService} from "../login.service";
+import {AudioControllerComponent} from "./audio-controller/audio-controller.component";
 
 @Component({
     selector: 'app-layout',
     standalone: true,
     imports: [
         RouterLink,
-        RouterLinkActive
+        RouterLinkActive,
+        AudioControllerComponent
     ],
     templateUrl: './layout.component.html',
     styleUrl: './layout.component.css'
