@@ -12,6 +12,7 @@ export class AudioControllerComponent {
     @ViewChild('openButton') openButton!: ElementRef
     @ViewChild('audioElement') audioElement!: ElementRef
     @ViewChild('volumeContainer') volumeContainer! : ElementRef
+    @ViewChild('volume') volume! : ElementRef
 
     curTime = signal<number>(0);
     time = signal<number>(0)
@@ -23,7 +24,7 @@ export class AudioControllerComponent {
     }
 
     toggleVolumeControls(){
-        this.volumeContainer.nativeElement.classList.toggle('hidden')
+        this.volume.nativeElement.classList.toggle('hidden')
     }
     changeVolume(volume : string){
         this.audioElement.nativeElement.volume = parseFloat(volume)

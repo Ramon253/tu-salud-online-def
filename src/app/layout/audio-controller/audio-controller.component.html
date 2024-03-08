@@ -29,16 +29,16 @@
         </select>
     </div>
     <div class="cursor-pointer relative overflow-visible flex flex-col">
-        <div #volumeContainer class="hidden  w-fit ">
-            <input #volume type="range" class="-rotate-90 " min="0" step="0.01" value="{{audioElement.volume}}" max="1" (change)="changeVolume(volume.value)">
+        <div #volumeContainer class="ml-4 -mr-28 w-10 transition h-5">
+            <input #volume type="range" class="origin-left p-2 rounded bg-secondary drop-shadow accent-violet-600 hidden transition -rotate-90" min="0" step="0.01" value="{{audioElement.volume}}" max="1" (change)="changeVolume(volume.value)">
         </div>
-        <div (click)="toggleVolumeControls()">
+        <div (click)="toggleVolumeControls()" class="hover:scale-110 transition">
             <span class="material-icons-outlined">volume_up</span>
         </div>
 
     </div>
     <audio #audioElement src="assets/audio/IntroduccionTuSaludOnline.mp3" class="appearance-none">
         Jl grande
-        <track src="">
+        <track src="/assets/audio/subtitulos_tu_salud_online_corregido.vtt" kind="captions" srclang="es" default label="Español">
     </audio>
 </div>
