@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Output, Input ,signal, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Output, signal, ViewChild} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {LoginService} from "../login.service";
 
@@ -13,17 +13,23 @@ import {LoginService} from "../login.service";
     styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
-    @Input() height = '15vh'
     @ViewChild('menu') menuRef!: ElementRef
     @ViewChild('menuBg') menuBg!: ElementRef
-    darkMode = signal<boolean>(JSON.parse(window.localStorage.getItem('darkMode') ?? 'false'))
+    @ViewChild('nav') navRef!: ElementRef
 
+    darkMode = signal<boolean>(JSON.parse(window.localStorage.getItem('darkMode') ?? 'false'))
     @Output() sendDarkMode = new EventEmitter<boolean>(this.darkMode())
     menu = false
 
     constructor(
         private loginSvc: LoginService
-    ) {}
+    ) {
+    }
+
+    @HostListener('document:scroll', ['$event'])
+    toggleNav(event: Event) {
+        /*Scroll event*/
+    }
 
     toggleDarkMode(): void {
         this.darkMode.set(!this.darkMode())
@@ -35,6 +41,7 @@ export class LayoutComponent {
         this.menuBg.nativeElement.classList.toggle('hidden')
         this.menu = !this.menu
     }
+
     isLogged() {
         return this.loginSvc.getIsLogged()
     }
@@ -50,7 +57,6 @@ export class LayoutComponent {
     getMenu(): boolean {
         return this.menu
     }
-
 
 
 }

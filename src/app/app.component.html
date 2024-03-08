@@ -1,3 +1,5 @@
-<app-layout (sendDarkMode)="toggleDarkMode($event)" height="{{height()}}"/>
-<router-outlet></router-outlet>
-<script src="https://cdn.tailwindcss.com"></script>
+<main>
+    <app-layout (sendDarkMode)="toggleDarkMode($event)"/>
+    <router-outlet></router-outlet>
+    <script src="https://cdn.tailwindcss.com"></script>
+</main>
