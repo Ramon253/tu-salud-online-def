@@ -1,4 +1,4 @@
-import {Component, effect, HostBinding, signal} from '@angular/core';
+import {Component, effect, HostBinding, signal, HostListener} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {LayoutComponent} from "./layout/layout.component";
 import {LoginComponent} from "./login/login.component";
@@ -13,10 +13,13 @@ import {AsyncPipe, JsonPipe} from "@angular/common";
 })
 export class AppComponent {
     darkMode = signal<boolean>(JSON.parse( window.localStorage.getItem('darkMode')  ?? 'false'))
+    height = signal<string>('15vh')
 
+    @HostListener('scroll', ['$event'])
+    onScroll(event : Event){
+        console.log('????????')
+    }
     @HostBinding('class.dark') get mode() {
-      console.log('Bind')
-      console.log(this.darkMode())
         return this.darkMode()
     }
 

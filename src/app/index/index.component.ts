@@ -1,4 +1,4 @@
-import {Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
+import {Component, ElementRef, QueryList, ViewChildren, Output, signal, EventEmitter} from '@angular/core';
 import {LoginService} from "../login.service";
 import {HomeComponent} from "./home/home.component";
 
@@ -12,6 +12,7 @@ import {HomeComponent} from "./home/home.component";
 export class IndexComponent {
     @ViewChildren('sliderImage') images!: QueryList<ElementRef>
     firstPos = 0
+
     getNextImage(pos = 0) {
         let prevPos = (pos === 0) ? this.images.length - 1 : pos - 1
 
