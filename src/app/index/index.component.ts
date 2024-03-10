@@ -2,11 +2,12 @@ import {Component, ElementRef, QueryList, ViewChildren, Output, signal, EventEmi
 import {LoginService} from "../login.service";
 import {HomeComponent} from "./home/home.component";
 import {CitesComponent} from "./cites/cites.component";
+import {ReviewsComponent} from "./reviews/reviews.component";
 
 @Component({
     selector: 'app-index',
     standalone: true,
-    imports: [HomeComponent, CitesComponent],
+    imports: [HomeComponent, CitesComponent, ReviewsComponent],
     templateUrl: './index.component.html',
     styleUrl: './index.component.css'
 })

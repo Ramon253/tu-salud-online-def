@@ -3,11 +3,12 @@ import {RouterOutlet} from '@angular/router';
 import {LayoutComponent} from "./layout/layout.component";
 import {LoginComponent} from "./login/login.component";
 import {AsyncPipe, JsonPipe} from "@angular/common";
+import {CiteComponent} from "./cites/cite/cite.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, LayoutComponent, LoginComponent, AsyncPipe, JsonPipe],
+    imports: [RouterOutlet, LayoutComponent, LoginComponent, AsyncPipe, JsonPipe, CiteComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

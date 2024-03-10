@@ -1,0 +1,17 @@
+<section class="bg-light p-4 dark:bg-dark w-full min-h-[85vh]">
+    <div class="max-w-screen-xl p-4 bg-secondary-light rounded shadow-2xl">
+        <div class="aspect-video max-h-3/4 flex justify-evenly ">
+            <button (click)="forward()" class="bg-light h-fit w-fit p-2 flex justify-center rounded-full self-center">
+                <span class="material-icons">arrow_back</span>
+            </button>
+            <div class="overflow-hidden h-full max-w-fit flex">
+                <video #video class="video w-full" src="/assets/video/review1.mp4" controls></video>
+                <video #video class="video " src="/assets/video/review2.mp4" controls></video>
+                <video #video class="video " src="/assets/video/review3.mp4" controls></video>
+            </div>
+            <button class="bg-light h-fit w-fit p-2 flex justify-center rounded-full self-center">
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+</section>
