@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './cite.component.css'
 })
 export class CiteComponent {
-
+    specialities = [
+        'Cardiologo',
+        'Pediatra',
+        'Neurologo',
+        'Traumatologo',
+        'Otorrino'
+    ]
 }

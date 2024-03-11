@@ -1,8 +1,8 @@
-<header class="fixed transition top-0 w-screen h-[15vh]" #nav>
+<header class="fixed z-20 transition top-0 w-screen h-[15vh]" #nav>
     <nav
         class="relative bg-main flex justify-evenly space-x-4 items-center dark:bg-main-dark w-full h-full text-gray-100 text-xl ">
         <div class="justify-self-start absolute  lg:static left-10">
-            <a [routerLink]="" class="">
+            <a routerLink="" class="">
                 <div class="sr-only">Icon button to go to home page</div>
                 <img src="./assets/images/homeIcon.png"
                      class="aspect-square  size-[7vh] rounded-full  shadow  hover:shadow-blue-900 hover:shadow-lg hover:scale-105 transition"
@@ -12,14 +12,14 @@
         <div
             class="flex justify-self-end space-x-16 items-end p-4 justify-center w-fit h-fit text-center text-gray-200">
             <ul class="hidden xl:flex w-fit  justify-end space-x-10 items-end">
-                <li class="shadow transition hover:scale-110"><a
-                    class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" href="">Especialidades</a></li>
-                <li class="shadow transition hover:scale-110"><a
-                    class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" href="">Cita</a></li>
-                <li class="shadow transition hover:scale-110"><a
-                    class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" href="">Seguro</a></li>
-                <li class="shadow transition hover:scale-110"><a
-                    class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" href="">Sobre nosotros</a></li>
+                <li class="transition hover:scale-110"><a
+                    class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" routerLink="cites/specialist">Especialidades</a></li>
+                <li class="transition hover:scale-110"><a
+                    class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" routerLink="cites/fast">Cita</a></li>
+                <li class="transition hover:scale-110"><a
+                    class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" href="#insurance">Seguro</a></li>
+                <li class="transition hover:scale-110"><a
+                    class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" routerLink="about">Sobre nosotros</a></li>
             </ul>
             <!--Search bar-->
             <div class="hidden md:flex">

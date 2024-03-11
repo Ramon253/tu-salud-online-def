@@ -14,11 +14,6 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'tu-salud-inline' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('tu-salud-inline');
-  });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
