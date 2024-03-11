@@ -3,6 +3,7 @@ import {IndexComponent} from "./index/index.component";
 import {LoginComponent} from "./login/login.component";
 import {CiteComponent} from "./cites/cite/cite.component";
 import {FastCiteComponent} from "./cites/fast-cite/fast-cite.component";
+import {AboutComponent} from "./about/about.component";
 
 
 export const routes: Routes = [
@@ -13,6 +14,10 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+      path: 'about',
+      component: AboutComponent
     },
     {
         path : 'cites',

@@ -10,11 +10,14 @@
             <div class="max-w-md overflow-hidden">
                 <div #videoContainer class="z-10 -translate-x-[{{curCos()*100}}%] transition h-full flex">
                     <video #video class="video" src="/assets/video/review1.mp4" controls>
+                        <track src="assets/video/subtitles1.vtt" kind="subtitles" default srclang="es" label="Español" >
                     </video>
                     <video #video class="video " src="/assets/video/review2.mp4" controls>
-
+                        <track src="assets/video/subtitles1.vtt" kind="subtitles" default srclang="es" label="Español">
                     </video>
-                    <video #video class="video " src="/assets/video/review3.mp4" controls></video>
+                    <video #video class="video " src="/assets/video/review3.mp4" controls>
+                        <track src="assets/video/subtitles1.vtt" kind="subtitles" default srclang="es" label="Español">
+                    </video>
                 </div>
             </div>
             <button (click)="forward()"
