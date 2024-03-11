@@ -21,7 +21,6 @@ export class ReviewsComponent {
         if (this.curCos() >= this.videoRef.length) {
             this.curCos.set(0)
         }
-        this.video.nativeElement.offsetHeight
     }
 
     backward() {

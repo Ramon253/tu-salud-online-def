@@ -1,5 +1,7 @@
 <section class="bg-light  p-4 dark:bg-dark w-full min-h-[85vh]">
-
+    <!--para que renderice las clases-->
+    <div class="hidden -translate-x-[100%]"></div>
+    <div class="hidden -translate-x-[200%]"></div>
     <div class="max-w-screen-xl mx-auto p-4 bg-secondary-light dark:bg-secondary rounded shadow-2xl">
 
         <div class=" h-full sm:max-h-3/4 flex justify-evenly ">
@@ -10,7 +12,7 @@
             <div class="max-w-md overflow-hidden">
                 <div #videoContainer class="z-10 -translate-x-[{{curCos()*100}}%] transition h-full flex">
                     <video #video class="video" src="/assets/video/review1.mp4" controls>
-                        <track src="assets/video/subtitles1.vtt" kind="subtitles" default srclang="es" label="Español" >
+                        <track src="assets/video/subtitles1.vtt" kind="subtitles" default srclang="es" label="Español">
                     </video>
                     <video #video class="video " src="/assets/video/review2.mp4" controls>
                         <track src="assets/video/subtitles1.vtt" kind="subtitles" default srclang="es" label="Español">
