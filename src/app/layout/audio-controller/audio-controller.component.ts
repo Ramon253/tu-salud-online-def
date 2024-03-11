@@ -67,7 +67,8 @@ export class AudioControllerComponent {
         this.curTime.set(this.audioElement.nativeElement.currentTime)
         this.time.set(Math.round(this.audioElement.nativeElement.duration))
 
-        this.audioWindow.nativeElement.classList.toggle('translate-x-[87%]')
+        this.audioWindow.nativeElement.classList.toggle('sm:translate-x-[87%]')
+        this.audioWindow.nativeElement.classList.toggle('translate-x-[70%]')
         this.openButton.nativeElement.classList.toggle('rotate-180')
         this.isOpen.set(!this.isOpen())
     }

@@ -1,6 +1,6 @@
 <div #audioWindow
-     class="fixed max-w-screen flex  transition items-center justify-center translate-x-[87%]  top-56 right-0 rounded-l-3xl bg-dark dark:bg-light h-fit p-4 space-x-4 dark:text-gray-800 text-gray-200 z-10">
-    <div (click)="toggleButton()" class="hover:scale-110 w-13% transition flex items-center justify-center">
+     class="fixed max-w-screen flex  transition items-center justify-center translate-x-[70%] sm:translate-x-[87%]  top-56 right-0 rounded-l-3xl bg-dark dark:bg-light h-fit p-4 space-x-4 dark:text-gray-800 text-gray-200 z-10">
+    <div (click)="toggleButton()" class="hover:scale-110 transition flex items-center justify-center">
         <span #openButton
               class="material-icons-outlined transition duration-300 bg-secondary dark:bg-secondary-light rounded-full p-2 order-1 cursor-pointer text-center">
             {{ isOpen() ? 'arrow_back_ios' : 'music_note' }}
@@ -9,13 +9,13 @@
     <div class="cursor-pointer hover:scale-110 transition" (click)="play()">
         <span class="material-icons-outlined">{{ audioElement.paused ? 'play_arrow' : 'pause' }}</span>
     </div>
-    <span class="">{{ formatTime(curTime()) }} / {{ formatTime(time()) }}</span>
+    <span class="hidden sm:flex">{{ formatTime(curTime()) }} / {{ formatTime(time()) }}</span>
     <div>
-        <input type="range" max="{{time()}}" value="{{curTime()}}" min="0" (change)="slideTime(slider.value) " #slider>
+        <input class="w-10 sm:w-fit" type="range" max="{{time()}}" value="{{curTime()}}" min="0" (change)="slideTime(slider.value) " #slider>
     </div>
     <div>
         <select (change)="setSpeed(speed.value)"
-                class="p-2 outline-secondary-light outline drop-shadow-xl drop-shadow-secondary-light bg-secondary dark:bg-secondary-light"
+                class="w-4 sm:w-fit p-2 outline-secondary-light outline drop-shadow-xl drop-shadow-secondary-light bg-secondary dark:bg-secondary-light"
                 #speed>
             <option class="p-4" value="-1">Velocidad</option>
             <option class="p-4" value="0.25">0.25</option>
