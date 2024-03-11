@@ -3,14 +3,13 @@
     <div class="max-w-screen-xl mx-auto p-4 bg-secondary-light dark:bg-secondary rounded shadow-2xl">
 
         <div class=" h-full sm:max-h-3/4 flex justify-evenly ">
-            <button (click)="backward()" class="bg-light h-fit w-fit p-2 flex justify-center rounded-full self-center">
+            <button (click)="backward()"
+                    class="bg-light h-fit w-fit p-2 flex justify-center rounded-full self-center hover:scale-110 hover:shadow-xl transition">
                 <span class="material-icons">arrow_back</span>
             </button>
             <div class="max-w-md overflow-hidden">
-                <div #videoContainer class="-translate-x-[{{curCos*100}}%] z-10 transition h-full flex">
+                <div #videoContainer class="-translate-x-[{{curCos() * 100 }}%] z-10 transition h-full flex">
                     <video #video class="video" src="/assets/video/review1.mp4" controls>
-                        <track src="/assets/audio/subtitulos_tu_salud_online_corregido.vtt" kind="captions" srclang="es"
-                               default label="Español">
                     </video>
                     <video #video class="video " src="/assets/video/review2.mp4" controls>
 
@@ -18,7 +17,8 @@
                     <video #video class="video " src="/assets/video/review3.mp4" controls></video>
                 </div>
             </div>
-            <button (click)="forward()" class="bg-light h-fit w-fit p-2 flex justify-center rounded-full self-center">
+            <button (click)="forward()"
+                    class="bg-light h-fit w-fit p-2 flex justify-center rounded-full self-center hover:scale-110 hover:shadow-xl transition">
                 <span class="material-icons">arrow_forward</span>
             </button>
         </div>

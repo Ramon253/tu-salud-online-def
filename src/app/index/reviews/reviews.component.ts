@@ -13,18 +13,18 @@ import {NgStyle} from "@angular/common";
 })
 export class ReviewsComponent {
  @ViewChildren('video') videoRef! : QueryList<ElementRef>;
- curCos =  0;
+ curCos = signal<number>(0);
  forward(){
-     this.curCos++
-     if (this.curCos >= this.videoRef.length){
-         this.curCos = 0
+     this.curCos.set(this.curCos() +1)
+     console.log(this.curCos())
+     if (this.curCos() >= this.videoRef.length){
+         this.curCos.set(0)
      }
  }
  backward(){
-     this.curCos--
-     if (this.curCos< 0)
-         this.curCos = this.videoRef.length
+     this.curCos.set(this.curCos() - 1)
+     console.log(this.curCos())
+     if (this.curCos() < 0)
+         this.curCos.set(this.videoRef.length)
  }
-
-    protected readonly self = self;
 }

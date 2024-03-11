@@ -1,5 +1,5 @@
 <div #audioWindow
-     class="fixed max-w-screen flex  transition items-center justify-center translate-x-[87%]  top-56 right-0 rounded-l-3xl bg-dark dark:bg-light h-fit p-4 space-x-4 dark:text-gray-800 text-gray-200 ">
+     class="fixed max-w-screen flex  transition items-center justify-center translate-x-[87%]  top-56 right-0 rounded-l-3xl bg-dark dark:bg-light h-fit p-4 space-x-4 dark:text-gray-800 text-gray-200 z-10">
     <div (click)="toggleButton()" class="hover:scale-110 w-13% transition flex items-center justify-center">
         <span #openButton
               class="material-icons-outlined transition duration-300 bg-secondary dark:bg-secondary-light rounded-full p-2 order-1 cursor-pointer text-center">
@@ -39,6 +39,11 @@
     </div>
     <audio #audioElement src="assets/audio/IntroduccionTuSaludOnline.mp3" class="appearance-none">
         Jl grande
-        <track src="/assets/audio/subtitulos_tu_salud_online_corregido.vtt" kind="captions" srclang="es" default label="Español">
+       <div class="sr-only">¡Bienvenido a Tu Salud Online, tu aliado de confianza en el camino hacia una vida más sana!
+           En Tu Salud Online, entendemos que tu salud y tu tiempo son preciosos. Por eso, hemos creado una plataforma que te permite acceder a servicios médicos de calidad desde la comodidad de tu hogar, asegurando una experiencia segura y conveniente.
+           Ya sea que necesites una consulta general o atención especializada, nuestra plataforma te conecta con profesionales de la salud altamente capacitados, listos para acompañarte en tu camino hacia el bienestar.
+           Invitamos a explorar nuestro sitio web para descubrir más sobre nuestros servicios, conocer a nuestro equipo de expertos y programar tu próxima cita médica con la facilidad y flexibilidad que necesitas.
+           Agradecemos tu confianza en Tu Salud Online. Estamos dedicados a cuidar de ti y de tus seres queridos.
+       </div>
     </audio>
 </div>
