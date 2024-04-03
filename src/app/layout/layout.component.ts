@@ -1,7 +1,9 @@
 import {Component, ElementRef, EventEmitter, HostListener, Output, signal, ViewChild} from '@angular/core';
-import {RouterLink, RouterLinkActive} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink, RouterLinkActive, ParamMap, NavigationEnd} from "@angular/router";
 import {LoginService} from "../login.service";
 import {AudioControllerComponent} from "./audio-controller/audio-controller.component";
+import { NavLink } from '../nav-link';
+import { Observable, pipe } from 'rxjs';
 
 @Component({
     selector: 'app-layout',
@@ -15,18 +17,35 @@ import {AudioControllerComponent} from "./audio-controller/audio-controller.comp
     styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
+    public path : string = ''
+
     @ViewChild('menu') menuRef!: ElementRef
     @ViewChild('menuBg') menuBg!: ElementRef
     @ViewChild('nav') navRef!: ElementRef
 
+    
     darkMode = signal<boolean>(JSON.parse(window.localStorage.getItem('darkMode') ?? 'false'))
     @Output() sendDarkMode = new EventEmitter<boolean>(this.darkMode())
+
     menu = false
 
+    public navLinks : Array<NavLink> = [
+        { path : '/cites/specialist', name : 'Especialidades'},
+        { path : '/cites/fast', name:'Cita'},
+        { path : '/about', name: 'Sobre nosotros'}
+    ]
+
     constructor(
-        private loginSvc: LoginService
+        private loginSvc: LoginService,
+        private router: Router
     ) {
+        this.router.events.subscribe(val => {
+            if (val instanceof NavigationEnd)
+                this.path = val.url
+        })
+
     }
+
 
     @HostListener('document:scroll', ['$event'])
     toggleNav(event: Event) {
