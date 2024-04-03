@@ -13,7 +13,7 @@
             class="flex justify-self-end space-x-16 items-end p-4 justify-center w-fit h-fit text-center text-gray-200">
             <ul #links  class="hidden xl:flex w-fit  justify-end space-x-10 items-end">
                 @for (navLink of navLinks; track navLink.path) {
-                    <li class="transition hover:scale-110 {{(path === navLink.path)? 'border-b-white dark:border-b-black border-b-2': ''}}"><a
+                    <li class="transition hover:scale-110 {{(path === navLink.path)? 'border-b-white border-b-2': ''}}"><a
                         class="transition hover:bg-main-dark hover:dark:bg-main p-2 rounded" routerLink="{{navLink.path}}">{{navLink.name}}</a></li>
                 }
             </ul>
@@ -30,8 +30,8 @@
             </div>
 
             <div class="hidden md:flex">
-                <button (click)="toggleDarkMode()" class="transition-all hover:scale-125 ">
-                    <span class="material-icons">{{ darkMode() ? 'dark_mode' : 'light_mode' }}</span>
+                <button (click)="toggleDarkMode(darkModeIcon1)" class="transition-all hover:scale-125 ">
+                    <span #darkModeIcon1 class="material-icons rotate-[360deg] duration-300 transition">{{ darkMode() ? 'dark_mode' : 'light_mode' }}</span>
                 </button>
             </div>
             <!--Auth buttons-->
@@ -46,15 +46,17 @@
                             Log in
                         </a>
                     </button>
+
                     <button
                         class="btn relative min-w-fit inline-flex items-center justify-start overflow-hidden transition-all bg-main rounded-lg hover:outline-main border-myGreen border-2 dark:bg-main-dark group ">
-                <span
-                    class="w-0 h-full text-none rounded bg-myGreen absolute top-0 left-0 ease-in-out group-hover:border-2 border-myGreen duration-300 transition-all group-hover:size-full -z-1">
-                </span>
+
                         <span
-                            class="w-full px-4 py-2 text-white transition-colors duration-300 ease-out  z-10"><a
-                            href="/register">Sign up</a>
-                </span>
+                            class="size-full h-full -translate-y-full text-none rounded bg-myGreen absolute top-0 ease-in-out group-hover:border-2 group-hover:translate-y-0 border-myGreen duration-300 transition-all  -z-1">
+                        </span>
+                        <span 
+                            class="w-full px-4 py-2 text-white transition-colors duration-300 ease-out  z-10">
+                            <a href="/register">Sign up</a>
+                        </span>
                     </button>
                 </div>
             }
@@ -62,15 +64,13 @@
 
         </div>
         <div
-            class="xl:hidden fixed sm:right-10 right-4 top-10 p-2 rounded-md bg-main-dark z-50 dark:bg-main hover:scale-110 transition">
-            <button (click)="toggleMenu()">
-                <span class="text-2xl material-icons">{{ getMenu() ? 'close' : 'menu' }}</span>
-            </button>
+            class="xl:hidden fixed sm:right-10 right-4 top-10 p-2 rounded-md bg-main-dark z-50 dark:bg-main hover:scale-110 transition" (click)="toggleMenu()">
+            <app-menu-button [menu]="menu"></app-menu-button>
         </div>
 
     </nav>
     <div class="xl:hidden">
-        <div id="menu" #menu
+        <div id="menu" #menuEl
              class="flex flex-col  transition ease-in duration-400 w-3/4 max-w-[500px] h-screen bg-main dark:bg-main-dark fixed right-0 top-0 z-30 translate-x-full shadow p-4 pt-5 space-y-[10vh]">
 
             @if (isLogged()) {
@@ -106,8 +106,8 @@
                     </div>
                 </form>
                 <div class="flex w-1/3">
-                    <button (click)="toggleDarkMode()" class="transition-all hover:scale-125 text-gray-300">
-                        <span class="material-icons">{{ darkMode() ? 'dark_mode' : 'light_mode' }}</span>
+                    <button (click)="toggleDarkMode(darkModeIcon2)" class="transition-all hover:scale-125 text-gray-300">
+                        <span #darkModeIcon2 class="material-icons rotate-[360deg] duration-300 transition">{{ darkMode() ? 'dark_mode' : 'light_mode' }}</span>
                     </button>
                 </div>
             </div>
@@ -115,25 +115,19 @@
             <div class="min-h-fit h-1/3 w-full text-gray-200 divide-y divide-black">
 
                 <ul class="flex flex-col  justify-evenly w-fit h-full ">
-                    <li class="flex items-center border-b border-gray-800 pb-4">
-                        <a href=""
-                           class="flex items-center space-x-2 hover:scale-105 hover:font-medium transition hover:bg-main-dark hover:dark:bg-main p-2 rounded">
+                        <li class="flex justify-center text-center border-b border-gray-800 pb-4 " >
+                        <a routerLink=""
+                           class="flex items-center space-x-2 hover:scale-105 hover:font-medium transition hover:bg-main-dark hover:dark:bg-main p-2 rounded {{path === '/' ? 'bg-secondary rounded' : ''}}">
                             <span class="material-icons">home</span>
                             <span>Home</span>
                         </a>
                     </li>
-                    <li class="flex items-center"><a
-                        class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition"
-                        routerLink="cites/specialist">Especialidades</a></li>
-                    <li class="flex items-center"><a
-                        class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition"
-                        routerLink="cites/fast">Cita</a></li>
-                    <li class="flex items-center"><a
-                        class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition"
-                        href="#insurance">Seguro</a></li>
-                    <li class="flex items-center"><a
-                        class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition"
-                        rou="about">Sobre nosotros</a></li>
+                    
+                    @for (navLink of navLinks; track $index) {
+                        <li class="flex items-center {{navLink.path === path ? 'border-l-2 border-white' : ''}}"><a
+                            class="hover:bg-main-dark hover:dark:bg-main p-2 rounded hover:scale-105 hover:font-medium transition"
+                            routerLink="{{navLink.path}}">{{navLink.name}}</a></li>
+                    }
                 </ul>
                 <div class="pt-10">
                     <a (click)="logout()"

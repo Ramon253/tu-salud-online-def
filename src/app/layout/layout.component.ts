@@ -4,6 +4,7 @@ import {LoginService} from "../login.service";
 import {AudioControllerComponent} from "./audio-controller/audio-controller.component";
 import { NavLink } from '../nav-link';
 import { Observable, pipe } from 'rxjs';
+import { MenuButtonComponent } from './menu-button/menu-button.component';
 
 @Component({
     selector: 'app-layout',
@@ -11,7 +12,8 @@ import { Observable, pipe } from 'rxjs';
     imports: [
         RouterLink,
         RouterLinkActive,
-        AudioControllerComponent
+        AudioControllerComponent,
+        MenuButtonComponent
     ],
     templateUrl: './layout.component.html',
     styleUrl: './layout.component.css'
@@ -19,7 +21,7 @@ import { Observable, pipe } from 'rxjs';
 export class LayoutComponent {
     public path : string = ''
 
-    @ViewChild('menu') menuRef!: ElementRef
+    @ViewChild('menuEl') menuRef!: ElementRef
     @ViewChild('menuBg') menuBg!: ElementRef
     @ViewChild('nav') navRef!: ElementRef
 
@@ -40,8 +42,10 @@ export class LayoutComponent {
         private router: Router
     ) {
         this.router.events.subscribe(val => {
-            if (val instanceof NavigationEnd)
+            if (val instanceof NavigationEnd){
                 this.path = val.url
+
+            }
         })
 
     }
@@ -53,8 +57,9 @@ export class LayoutComponent {
     }
 
 
-    toggleDarkMode(): void {
+    toggleDarkMode(icon : HTMLSpanElement): void {
         this.darkMode.set(!this.darkMode())
+        icon.classList.toggle('rotate-[360deg]')
         return this.sendDarkMode.emit(this.darkMode())
     }
 
