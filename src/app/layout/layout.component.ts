@@ -43,8 +43,7 @@ export class LayoutComponent {
     ) {
         this.router.events.subscribe(val => {
             if (val instanceof NavigationEnd){
-                this.path = val.url
-
+                this.path = val.url.replace(/(\?.*?$)/, '')
             }
         })
 
@@ -56,6 +55,23 @@ export class LayoutComponent {
         /*Scroll event*/
     }
 
+    showRoute(route : string ) : string{
+        switch (route){
+            case '/' : {
+                return 'Home'
+            }
+            case '/cites/specialist' : {
+                return 'Citas/Especialidades'
+            }
+            case '/cites/fast' : {
+                return 'Citas/Rapidas'
+            }
+            case '/about': {
+                return 'Sobre nosotros'
+            }
+        }
+        return ''
+    }
 
     toggleDarkMode(icon : HTMLSpanElement): void {
         this.darkMode.set(!this.darkMode())

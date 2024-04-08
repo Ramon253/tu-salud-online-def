@@ -1,10 +1,10 @@
 .icon{
-    @apply w-full rounded h-[3px] bg-white transition 
+    @apply w-full rounded-sm h-[2px] bg-white transition duration-300
 }
 
 .secondCross{
-    @apply absolute top-1/2 bottom-1/2 w-[30px] -rotate-[135deg] h-[3px]
+    @apply absolute top-1/2 bottom-1/2 w-[30px] -rotate-[135deg] 
 }
 .firstCross{
-    @apply absolute top-1/2 bottom-1/2 w-[30px] rotate-[135deg] h-[3px]
+    @apply absolute top-1/2 bottom-1/2 w-[30px] rotate-[135deg] 
 }

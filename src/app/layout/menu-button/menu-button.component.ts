@@ -9,12 +9,11 @@ import { Component, ElementRef, Input, QueryList, SimpleChanges, ViewChildren } 
 })
 export class MenuButtonComponent {
   @ViewChildren('menu') menuElements! : QueryList<ElementRef>
-  @Input() menu : boolean = false;
+  @Input({required : true}) menu : boolean = false;
   
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['menu'].previousValue !== changes['menu'].currentValue)
       this.toggleMenu()
-    
   }
   toggleMenu(...elemnts : Array<HTMLDivElement>){
     this.menuElements.first.nativeElement.classList.toggle('firstCross')

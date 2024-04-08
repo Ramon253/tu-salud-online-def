@@ -5,6 +5,7 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
+    
     extend: {
       colors: {
         'main': '#273259',
